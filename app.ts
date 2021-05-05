@@ -1,4 +1,4 @@
-import Server from "./models/server";
+import Server from "./server/server";
 // import { dbConnection }  from './database/config';
 
 

@@ -5,6 +5,7 @@ import CORS from "cors";
 
 // ***** ROUTES *****
 import usersRouter from '../routes/user.routes';
+import { dbConnection } from '../database/config';
 
 // **********
 
@@ -21,7 +22,10 @@ export default class Server {
         // Puerto 
         this.port = Number(process.env.PORT);
 
-        // Inicializa el servidor express
+        // Connect data base
+        this.connectDB();
+
+        // Initialize server express
         this.app = express();
         
         // Middlewares
@@ -47,6 +51,9 @@ export default class Server {
         this.app.use(express.static('public'));
     }
 
+    async connectDB(){
+        await dbConnection();
+    }
     start(callback: () => void) {
         // Levantar el servidor
         this.app.listen(this.port, callback);
