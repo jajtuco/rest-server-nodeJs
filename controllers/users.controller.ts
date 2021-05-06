@@ -58,6 +58,7 @@ export class UsersController {
 
   static async Delete(req: Request, res: Response) {
     const { id } = req.params;
+    const currentUser = req.body.currentUser; // This was added in validateJWT.middleware
 
     //Physically delete
     // const user = await User.findByIdAndDelete(id);
@@ -66,7 +67,8 @@ export class UsersController {
     const user = await User.findByIdAndUpdate(id, { state: false });
 
     res.status(200).json({
-      user
+      user,
+      currentUser
     });
   }
 }

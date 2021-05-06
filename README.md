@@ -47,3 +47,8 @@ Para encriptar las contraseñas
 
 npm install express-validator
 npm install @types/express-validator --save-dev
+
+# 10 - Para encriptar las contraseñas
+
+npm install jsonwebtoken
+npm install @types/jsonwebtoken --save-dev

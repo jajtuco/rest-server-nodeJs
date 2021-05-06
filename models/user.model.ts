@@ -42,7 +42,8 @@ const UserSchema = new Schema(
   {
     toJSON: {
       transform: (doc, rest): any => {
-        const { __v, password, ...object } = rest;
+        const { __v, password, _id, ...object } = rest;
+        object.uid = _id;
         return object;
       }
     }
