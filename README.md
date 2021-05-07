@@ -52,3 +52,7 @@ npm install @types/express-validator --save-dev
 
 npm install jsonwebtoken
 npm install @types/jsonwebtoken --save-dev
+
+# 11 - Para validar token de google
+
+npm install google-auth-library

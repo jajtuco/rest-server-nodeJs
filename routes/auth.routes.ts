@@ -15,4 +15,10 @@ authRouter.post('/login', [
   validateField
 ], AuthController.login);
 
+authRouter.post('/google', [
+  check('id_token', 'The id_token is required').not().isEmpty(),
+  validateField
+], AuthController.googleSignIn);
+
+
 export default authRouter;

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import * as bcryptjs from 'bcryptjs';
 import { User } from '../models/user.model';
 import { generateJWT } from '../helpers/generateJWT';
+import { googleVerify } from '../helpers/google-verify';
 
 export default class AuthController {
   static async login(req: Request, res: Response) {
@@ -47,13 +48,43 @@ export default class AuthController {
 
   static async googleSignIn(req: Request, res: Response) {
     try {
+      const { id_token } = req.body;
+
+      const { name, email, picture: img } = await googleVerify(id_token);
+
+      let user = await User.findOne({ email });
+console.log("User", user);
+
+      if (!user) {
+        user = new User({
+          password: '@@@',
+          name,
+          email,
+          img,
+          google: true
+        });
+
+        await user.save();
+      }
+
+      // Check if the user is active
+      if (!user.state) {
+        return res.status(401).json({
+          msg: 'Invalid user'
+        });
+      }
+
+      // 3 - Genearte TOKEN
+      const token = await generateJWT(user.id);
+
       res.json({
-        ok: true
+        user,
+        token
       });
     } catch (error) {
       res.status(401).json({
         ok: false,
-        msg: error //'Token incorrecto!!!!!!!!'
+        msg: error
       });
     }
   }
