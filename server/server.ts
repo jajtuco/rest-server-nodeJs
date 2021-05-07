@@ -7,6 +7,7 @@ import usersRouter from '../routes/user.routes';
 import authRouter from '../routes/auth.routes';
 // **********
 import { dbConnection } from '../database/config';
+import categoryRouter from '../routes/category.routes';
 
 export default class Server {
   public app: Application;
@@ -35,6 +36,7 @@ export default class Server {
   routes() {
     this.app.use('/api/auth', authRouter);
     this.app.use('/api/users', usersRouter);
+    this.app.use('/api/category', categoryRouter);
   }
 
   middlewares() {

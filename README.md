@@ -1,58 +1,73 @@
-# 1: Iniciar proyecto de node -> crea package.json
+# Description
 
+Base REST Server made it with:
+
+- NodeJS
+- Express
+- Mongoose
+- MongoDB
+
+The api has regular signIn using JWT and google signIn.
+CRUD of Users
+
+# Steps & packages
+
+## 1. Init the project -> creates package.json
+~~~
 npm init
-
-# 2: Iniciar typescript -> crea tsconfig.json
-
+~~~
+## 2. Init typescript -> creates tsconfig.json
+~~~
 tsc --init
-
-# 3: Instalar express & types
-
+~~~
+## 3. Install express & types
+~~~
 npm i express
 npm i -D @types/express
-
-# 4: Instalar dotenv & types
-
+~~~
+## 4. Install dotenv & types
+~~~
 npm i dotenv
 npm i -D @types/dotenv
-
-# 5: Instalar tslint para añadir reglas de desarrollo con typescript
-
+~~~
+## 5. Install tslint to add typescript rules
+~~~
 npm i -D tslint
-
-## 5.1: Para crear el archivo de config de tslint hay que tener typescript local
-
+~~~
+### 5.1. In order to create the tslint config file we have to install typescript locally
+~~~
 npm i -D typescript
-
-## 5.2: Ejectura el tslint -> crea el tslint.json
-
+~~~
+### 5.2. Run tslint -> creates tslint.json
+~~~
 ./node_modules/.bin/tslint --init
-
-# 6: Instalar CORS
-
+~~~
+## 6. Install CORS
+~~~
 npm install cors --save
 npm install @types/cors --save-dev
-
-# 7: Instalar Mongoose
-
+~~~
+## 7. Install Mongoose as ODM
+~~~
 npm i mongoose
 npm i -D @types/mongoose
-
-# 8 - npm install bcryptjs
-
+~~~
+## 8. To encrypt passwords
+~~~
 npm install @types/bcryptjs --save-dev
-Para encriptar las contraseñas
-
-# 9 - Para realizar las validaciones del request
-
+npm install bcryptjs
+~~~
+## 9. To validate requests
+~~~
 npm install express-validator
 npm install @types/express-validator --save-dev
-
-# 10 - Para encriptar las contraseñas
-
+~~~
+## 10. To work with JWT
+~~~
 npm install jsonwebtoken
 npm install @types/jsonwebtoken --save-dev
-
-# 11 - Para validar token de google
-
+~~~
+## 11. To validate google token
+~~~
 npm install google-auth-library
+~~~

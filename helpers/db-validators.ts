@@ -1,6 +1,6 @@
-import { Role } from '../models/role.model';
-import { User } from '../models/user.model';
+import { Category, Role, User } from '../models';
 
+//*** Users ***/
 export const isValidRole = async (role = '') => {
   const existsRole = await Role.findOne({ role });
   if (!existsRole) {
@@ -19,4 +19,12 @@ export const existsEmail = async (email: string) => {
 export const existsUserById = async (id: string) => {
   const existsUser = await User.findById(id);
   if (!existsUser) throw new Error(`There is no user with id ${id}`);
+};
+
+
+//*** Categories ***/
+// Check if the category exists
+export const existsCategoryById = async (id: string) => {
+  const existsCategory = await Category.findById(id);
+  if (!existsCategory) throw new Error(`There is no category with id ${id}`);
 };

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { User } from '../models/user.model';
+import { User } from '../models/index';
 import * as bcryptjs from 'bcryptjs';
 
 export class UsersController {
@@ -10,7 +10,9 @@ export class UsersController {
     const resp = await Promise.all([
       User.countDocuments(),
       User.countDocuments(query),
-      User.find(query).skip(Number(from)).limit(Number(limit))
+      User.find(query)
+        .skip(Number(from))
+        .limit(Number(limit))
     ]);
 
     const [total, actives, users] = resp;
@@ -64,7 +66,7 @@ export class UsersController {
     // const user = await User.findByIdAndDelete(id);
 
     // Logic delete
-    const user = await User.findByIdAndUpdate(id, { state: false });
+    const user = await User.findByIdAndUpdate(id, { state: false }, { new: true });
 
     res.status(200).json({
       user,
