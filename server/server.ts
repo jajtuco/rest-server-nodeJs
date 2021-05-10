@@ -5,6 +5,8 @@ import CORS from 'cors';
 // ***** ROUTES *****
 import usersRouter from '../routes/user.routes';
 import authRouter from '../routes/auth.routes';
+import productRouter from '../routes/product.routes';
+import searchRouter from '../routes/search.routes';
 // **********
 import { dbConnection } from '../database/config';
 import categoryRouter from '../routes/category.routes';
@@ -37,6 +39,8 @@ export default class Server {
     this.app.use('/api/auth', authRouter);
     this.app.use('/api/users', usersRouter);
     this.app.use('/api/category', categoryRouter);
+    this.app.use('/api/product', productRouter);
+    this.app.use('/api/search', searchRouter);
   }
 
   middlewares() {
