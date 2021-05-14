@@ -71,3 +71,16 @@ npm install @types/jsonwebtoken --save-dev
 ~~~
 npm install google-auth-library
 ~~~
+
+## 12. To upload files
+~~~
+npm i express-fileupload
+npm i -D @types/express-fileupload
+~~~
+
+## 13. To generate uniques ID
+~~~
+npm i uuid
+npm i -D @types/uuid
+~~~
+

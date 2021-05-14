@@ -36,3 +36,11 @@ export const existsProductById = async (id: string) => {
   const existsProduct = await Product.findById(id);
   if (!existsProduct) throw new Error(`There is no product with id ${id}`);
 };
+
+//*** Validate Collections ***/
+export const availablesCollections = async (collection: string = '', collections: string[] = []) => {
+  const existsCollection = collections.includes(collection);
+  if (!existsCollection) throw new Error(`The collection ${collection} is not available - ${ collections }`);
+
+  return true;
+};

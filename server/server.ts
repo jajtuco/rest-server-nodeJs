@@ -10,6 +10,8 @@ import searchRouter from '../routes/search.routes';
 // **********
 import { dbConnection } from '../database/config';
 import categoryRouter from '../routes/category.routes';
+import uploadRouter from '../routes/upload.routes';
+import fileUpload from 'express-fileupload';
 
 export default class Server {
   public app: Application;
@@ -41,6 +43,7 @@ export default class Server {
     this.app.use('/api/category', categoryRouter);
     this.app.use('/api/product', productRouter);
     this.app.use('/api/search', searchRouter);
+    this.app.use('/api/upload', uploadRouter);
   }
 
   middlewares() {
@@ -50,8 +53,14 @@ export default class Server {
     this.app.use(express.json());
     // CORS
     this.app.use(CORS({ origin: true, credentials: true }));
-    // Directorio publico
+    // Public folder
     this.app.use(express.static('public'));
+    // File upload
+    this.app.use(fileUpload({
+      useTempFiles: true,
+      tempFileDir: '/tmp/',
+      createParentPath: true
+    }));
   }
 
   async connectDB() {

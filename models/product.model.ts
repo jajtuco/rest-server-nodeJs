@@ -31,7 +31,10 @@ const ProductSchema = new Schema({
   available: {
     type: String,
     default: true
-  }
+  },
+  img: {
+    type: String
+  },
 },
   {
     toJSON: {
@@ -49,6 +52,7 @@ interface IProduct extends Document {
   price: number;
   category: Object;
   description: string;
+  img: string;
   available: boolean;
 }
 
