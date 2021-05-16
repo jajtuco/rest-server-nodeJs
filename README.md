@@ -1,4 +1,5 @@
 # Description
+Udemy project
 
 Base REST Server made it with:
 
@@ -10,7 +11,21 @@ Base REST Server made it with:
 The api has regular signIn using JWT and google signIn.
 CRUD of Users
 
+## Run
+~~~
+npm init
+~~~
+
+~~~
+tsc -w
+~~~
+~~~
+nodemon dist/app.js
+~~~
+------ 
+
 # Steps & packages
+Just to remember step
 
 ## 1. Init the project -> creates package.json
 ~~~
