@@ -13,7 +13,7 @@ CRUD of Users
 
 ## Run
 ~~~
-npm init
+npm i
 ~~~
 
 ~~~
